@@ -9,9 +9,12 @@ __pycache__/
 #PyCharm folder
 *.idea
 
-#datasets
+#Private part
+private
+
+
+#data
 data
-dataset_old
 Video
 checkpoints
 *.pth
