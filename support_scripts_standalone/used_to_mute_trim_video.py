@@ -137,7 +137,7 @@ def process_camera_videos():
             process_camera_videos.scene_dir = os.path.join(output_folder, f"scene{spc + 1}")
 
         os.makedirs(process_camera_videos.scene_dir, exist_ok=True)
-        output_path = os.path.join(process_camera_videos.scene_dir, f"{video_name}_cropped")
+        output_path = os.path.join(process_camera_videos.scene_dir, f"{video_name}")
         crop_video(input_path, output_path, crop_rect)
         tag_as_processed(input_path)
         print("Done.\n")

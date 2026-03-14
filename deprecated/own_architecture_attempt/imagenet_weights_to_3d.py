@@ -1,7 +1,7 @@
 import torch
 from torchinfo import summary
 from torchvision.models import mobilenet_v3_large, MobileNet_V3_Large_Weights
-from own_architecture_attempt import MobileNet3D
+from visual_gest_rec_own_architecture import MobileNet3D
 from pytorchvideo.models.hub import x3d_s
 import torch.nn as nn
 n_classes = 33

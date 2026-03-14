@@ -74,9 +74,9 @@ def hist_classcounts(class_counts):
         )
 
     plt.xticks(rotation=0)
-    plt.xlabel("Клас")
-    plt.ylabel("Кількість зразків")
-    plt.title("Розподіл відеозразків по класах (train)")
+    plt.xlabel("Class")
+    plt.ylabel("Num instances")
+    plt.title("Distribution of video samples by class (train)")
     plt.tight_layout()
     plt.show()
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     #len_origin, len_total, _ = calculate_origin_vs_total_size_info("../data")
     #print(f"origin: {len_origin}; total: {len_total}")
 
-    train_dir = "../data/train"
-    dataset_dir = "../data"
-    #class_counts = count_subfolders_per_class(train_dir)
-    #hist_classcounts(class_counts)
+    train_dir = "../private/data/train"
+    dataset_dir = "../private/data"
+    class_counts = count_subfolders_per_class(train_dir)
+    hist_classcounts(class_counts)

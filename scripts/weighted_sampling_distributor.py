@@ -4,8 +4,9 @@ from sklearn.metrics import confusion_matrix
 
 
 
-def analyze_weaknesses_produce_weights():
-    stats = torch.load("checkpoints/stats/ep_161_p_94.3_r_93.5_a_93.9_stats.pth", weights_only=False)
+def analyze_weaknesses_produce_weights(pth_path):
+
+    stats = torch.load(pth_path, weights_only=False)
 
 
     targets, predictions = stats['train_targets'], stats['train_predictions']
