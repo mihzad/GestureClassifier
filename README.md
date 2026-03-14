@@ -4,10 +4,7 @@ This gesture classifier is the result of the first successful train|validation|t
 The second version is trained for all the alphabet including dynamic gestures, leverages completely different architecture - Expand3D (X3D-M) - with kinetics-400 backbone.
 For further descriptions, see Abstract.pdf.
 
-Original dataset (used in 2d-conv versions) was aquired from:
-Kondratiuk S., Krak I., Kuznetsov V., Kulias A. Using the temporal data and three-dimensional convolutions for sign language alphabet recognition. Conference: CMIS 2022. 2022. Vol. –, P. 78–87. https://doi.org/10.32782/cmis/3137-7
-
-The expanded version of dataset (used in the last version) can be found at: https://doi.org/10.5281/zenodo.17618405 (frame_data.zip)
+The dataset can be found at: https://doi.org/10.5281/zenodo.17618405 (frame_data.zip)
 
 # Illustrations:
 
