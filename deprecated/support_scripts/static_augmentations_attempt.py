@@ -4,7 +4,7 @@ from torchvision import datasets, transforms
 import torchvision.transforms.v2 as v2
 import os
 
-from utils_data_loading import TransformSubset, VideoFramesFolderDataset
+from utils.data_loading import TransformSubset, VideoFramesFolderDataset
 
 # Image size
 img_size = 224

@@ -7,7 +7,7 @@ from pathlib import Path
 
 def perform_testing(net, batch_size, testing_set, weights_file: Path):
     print("performing testing...")
-    testing_loader = DataLoader(testing_set, batch_size=batch_size, shuffle=True, num_workers=batch_size)
+    testing_loader = DataLoader(testing_set, batch_size=batch_size, shuffle=True, num_workers=6)
 
     net_data = torch.load(str(weights_file))
     net.load_state_dict(net_data['model'], strict=True)

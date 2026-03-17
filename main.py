@@ -71,8 +71,8 @@ def perform_training(model,
     )
 
     #manual testing cycle
-    #from support_scripts.dataset_visualizer import infinite_visualization
-    #infinite_visualization(train_set, transform=train_transform)
+    from scripts.dataset_visualizer import infinite_visualization
+    infinite_visualization(train_set)
 
     CHECKPOINTS_DIR.mkdir(parents=True, exist_ok=True)
     STATS_DIR.mkdir(parents=True, exist_ok=True)
@@ -163,7 +163,7 @@ def perform_training_epoch(model, full_batch_size, sub_batch_size,
         loss.backward()
         batch_losses.append(loss.item())
 
-        if (i + 1) % accum_steps == 0:
+        if (i + 1) % accum_steps == 0 or (i+1) == len(train_loader):
             optimizer.step()
             optimizer.zero_grad()
 
@@ -211,8 +211,8 @@ if __name__ == '__main__':
                      lr=1e-3, 
                      pretrained=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
 
-    perform_testing(model, batch_size=8, testing_set=train_set,
-                    weights_file=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
+    #perform_testing(model, batch_size=8, testing_set=train_set,
+    #                weights_file=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
 
 
 

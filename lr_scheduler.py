@@ -17,14 +17,15 @@ def create_scheduler(optimizer: torch.optim.Optimizer):
     T_0=10, T_mult=1.1, decay_factor=0.9, base_lr=1e-3, eta_min=1e-8),
     scheduler = LambdaLR(
         optimizer,
-        lr_lambda=cosannealing_decay_warmup(scheduler_params)
+        lr_lambda=cosannealing_decay_warmup(**scheduler_params)
     )
-
     #scheduler = CosineAnnealingLR(
     #    optimizer=optimizer,
     #    T_max=50,
     #    eta_min=1e-8,
     #)
+
+    return scheduler
 
 def cosannealing_decay_warmup(warmup_steps, T_0, T_mult, decay_factor, base_lr, eta_min):
     # returns the func that performs all the calculations.

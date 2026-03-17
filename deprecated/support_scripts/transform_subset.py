@@ -1,7 +1,7 @@
 import numpy as np
 
 from torch.utils.data import Subset
-from utils_data_loading import VideoFramesFolderDataset
+from utils.data_loading import VideoFramesFolderDataset
 
 import torchvision.transforms.v2 as v2
 
