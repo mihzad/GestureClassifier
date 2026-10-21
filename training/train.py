@@ -71,8 +71,8 @@ def perform_training(model,
     )
 
     #manual testing cycle
-    from scripts.dataset_visualizer import infinite_visualization
-    infinite_visualization(train_set)
+    #from scripts.dataset_visualizer import infinite_visualization_firstframes, infinite_visualization
+    #infinite_visualization_firstframes(train_set, random_video_id=1243)
 
     CHECKPOINTS_DIR.mkdir(parents=True, exist_ok=True)
     STATS_DIR.mkdir(parents=True, exist_ok=True)
@@ -152,8 +152,9 @@ def perform_training_epoch(model, full_batch_size, sub_batch_size,
     for i, (inputs, labels) in enumerate(train_loader):
         inputs, labels = inputs.cuda(), labels.cuda()
 
+        print("inputs", inputs.shape)
         outputs = model(inputs)
-
+        print("outputs", outputs.shape)
         pred_vals, pred_classes = torch.max(outputs.data, 1)
         targets.extend(labels.detach().cpu().numpy())
         predictions.extend(pred_classes.detach().cpu().numpy())
@@ -202,17 +203,17 @@ if __name__ == '__main__':
 
     train_transform, nontrain_transform = create_transforms(img_size=IMG_SIZE)
 
-    train_set = VideoFramesFolderDataset(DATA_DIR / 'train', per_img_transform=train_transform, production_ready=False)
+    train_set = VideoFramesFolderDataset(DATA_DIR / 'train', per_img_transform=train_transform, production_ready=True)
     val_set = VideoFramesFolderDataset(DATA_DIR / 'val', per_img_transform=nontrain_transform, production_ready=True)
     test_set = VideoFramesFolderDataset(DATA_DIR / 'test', per_img_transform=nontrain_transform, production_ready=True)
 
-    perform_training(model, train_set, val_set,
-                     epochs=600, w_decay=1e-4, batch_size=64, sub_batch_size=4,
-                     lr=1e-3, 
-                     pretrained=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
+    # perform_training(model, train_set, val_set,
+    #                  epochs=600, w_decay=1e-4, batch_size=64, sub_batch_size=4,
+    #                  lr=1e-3, 
+    #                  pretrained=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
 
-    #perform_testing(model, batch_size=8, testing_set=train_set,
-    #                weights_file=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
+    perform_testing(model, batch_size=8, testing_set=test_set,
+                   weights_file=CHECKPOINTS_DIR / f'ep_161_p_94.3_r_93.5_a_93.9_model.pth')
 
 
 

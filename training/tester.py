@@ -20,6 +20,8 @@ def perform_testing(net, batch_size, testing_set, weights_file: Path):
         predictions = []
         for inputs, labels in testing_loader:
             inputs, labels = inputs.cuda(), labels.cuda()
+
+            print(inputs.shape)
             outputs = net(inputs)
 
             pred_vals, pred_classes = torch.max(outputs.data, 1)

@@ -33,11 +33,27 @@ def load_checkpoint(model, optimizer, scheduler, checkpoint_path: None | Path, h
 
     return model, optimizer, scheduler, epoch
 
+def load_model_only(model, checkpoint_path: None | Path):
+
+    if isinstance(checkpoint_path, Path):
+        printshare("Loading pretrained model dict...")
+        checkpoint = torch.load(str(checkpoint_path))
+
+        if 'model' not in checkpoint:
+            missing, unexpected = model.load_state_dict(checkpoint, strict=False)
+        else:
+            missing, unexpected = model.load_state_dict(checkpoint['model'], strict=False)
+
+        printshare(f"[DEBUG] model missing statedict vals: {missing};")
+        printshare(f"[DEBUG] model unexpected statedict vals: {unexpected}")
+        printshare("model state dict set up successfully.")
+
+    return model
 
 def save_checkoint_and_stats(model, optimizer, scheduler, stats,
                               checkpoints_dir: Path, stats_dir: Path):
      
-    info_str = f"/ep_{stats["epoch"]+1}_p_{round(stats["val_precision"], 1)}_r_{round(stats["val_recall"], 1)}_a_{round(stats["val_accuracy"], 1)}"
+    info_str = f"/ep_{stats['epoch']+1}_p_{round(stats['val_precision'], 1)}_r_{round(stats['val_recall'], 1)}_a_{round(stats['val_accuracy'], 1)}"
 
     torch.save({ # model
         'model': model.state_dict(),
