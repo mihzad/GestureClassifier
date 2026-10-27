@@ -12,12 +12,15 @@ __pycache__/
 #Private part
 private
 
-
 #data
 data
 Video
 checkpoints
 *.pth
+
+#misc
+postman
+.postman
 
 # Distribution / packaging
 .Python

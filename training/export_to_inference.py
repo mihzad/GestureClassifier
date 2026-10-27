@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
 
     ready_wrapped_model = ResizeNormalizeWrapper(model=model_w_weights, transform=nontrain_transform).cuda().eval()
-    example_inputs = (torch.randint(low=0,high=256, size=(1,3,16,256,320,)).cuda(),)
+    example_inputs = (torch.randint(low=0,high=256, size=(1,3,16,256,320,), dtype=torch.int32).cuda(),)
 
 
     dynamic_shapes_config = {
