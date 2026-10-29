@@ -63,3 +63,10 @@ SK-learn classification report:
 | **macro avg** | 0.92 | 0.91 | 0.91 | 528 |
 | **weighted avg** | 0.92 | 0.91 | 0.91 | 528 |
 
+Resulting model was converted to ONNX format, included into FastAPI-built gateway (can be queried), and put into docker image available at:
+https://hub.docker.com/repository/docker/mihzad/gesture-classifier/general
+
+
+Also, a simple frontend was generated, it does all the preprocessing and allows to recognize letters right away.
+
+TODO: add illustrations, enhance description of gateway and frontend.

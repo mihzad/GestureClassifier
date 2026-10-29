@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import os
 import asyncio
 import concurrent.futures
@@ -10,7 +9,6 @@ import numpy as np
 
 class Inferencer():
     def __init__(self):
-        load_dotenv(".env")
 
         self.modelname = os.getenv("ONNX_MODEL_FILE")
         self.prediction_threshold = float(os.getenv("ONNX_MODEL_PREDICTION_THRESHOLD"))

@@ -1,0 +1,9 @@
+services:
+  gateway:
+    build: .
+    image: mihzad/gesture-classifier:1.0.0
+    container_name: api-gateway
+    env_file:
+      .env
+    ports:
+      - "${GATEWAY_UVICORN_PORT}:8000"
