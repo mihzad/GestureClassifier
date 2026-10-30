@@ -2,11 +2,9 @@
 ## Contents
 - [Demo](#demo)
 - [Brief description](#brief-description)
-- [Illustrations](#illustrations)
+- [Illustrations](#illustrations-of-the-dataset)
 - [Quality reports](#quality-reports)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results](#results)
+- [Inference](#inference)
 
 
 ## Demo
@@ -15,17 +13,17 @@
 </p>
 
 ## Brief description
-This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf file - Defailed descriptions of that one can be found there.
+This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf (ukrainian) file - Defailed descriptions of that one can be found there.
 
 The second version is trained for all the alphabet including dynamic gestures, leverages completely different architecture - Expand3D (X3D-M) - with kinetics-400 backbone:
 
 *Feichtenhofer, C. (2020). X3D: Expanding architectures for efficient video recognition. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 203–213. https://doi.org/10.1109/CVPR42600.2020.00028*
 
-The dataset can be found at: https://doi.org/10.5281/zenodo.17618405
+The model was fine-tuned with manually assembled dataset which can be found at: https://doi.org/10.5281/zenodo.17618405
 
-Defailed descriptions of the last GC version can be found in masters_diploma.pdf
+Defailed descriptions of the last GC version can be found in masters_diploma.pdf (ukrainian)
 
-## Illustrations
+## Illustrations of the dataset
 
 1) training set (1st-of-16 frame examples):
 <p align="center">
