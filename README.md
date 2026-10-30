@@ -1,27 +1,52 @@
-# Brief description
-This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf file - further descriptions can be found there.
 
-The second version is trained for all the alphabet including dynamic gestures, leverages completely different architecture - Expand3D (X3D-M) - with kinetics-400 backbone.
-For further descriptions, see Abstract.pdf.
+## Contents
+- [Demo](#demo)
+- [Brief description](#brief-description)
+- [Illustrations](#illustrations)
+- [Quality reports](#quality-reports)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Results](#results)
 
-The dataset can be found at: https://doi.org/10.5281/zenodo.17618405 (frame_data.zip)
 
-# Illustrations:
+## Demo
+<p align="center">
+  <img src="./assets/demo.gif" width="800" alt="Demo">
+</p>
 
-1) training set (frame examples):
-<img width="975" height="394" alt="image" src="https://github.com/user-attachments/assets/bc3def19-ef71-4712-bcba-5e9622d1d3d9" />
+## Brief description
+This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf file - further descriptions of that one can be found there.
+The second version is trained for all the alphabet including dynamic gestures, leverages completely different architecture - Expand3D (X3D-M) - with kinetics-400 backbone:
 
-2) validation set (frame examples):
-<img width="975" height="392" alt="image" src="https://github.com/user-attachments/assets/3b153ed8-d831-4124-8a72-7b4067e1c180" />
+*Feichtenhofer, C. (2020). X3D: Expanding architectures for efficient video recognition. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 203–213. https://doi.org/10.1109/CVPR42600.2020.00028*
 
-3) testing set (frame examples):
-<img width="975" height="392" alt="image" src="https://github.com/user-attachments/assets/af6f6554-0106-4c32-bf96-f567687779fe" />
+The dataset can be found at: https://doi.org/10.5281/zenodo.17618405
 
-# Test set classification reports:
+## Illustrations
 
-<img width="864" height="710" alt="image" src="https://github.com/user-attachments/assets/c1549c29-efa5-4c6f-98cc-86787e6e8aca" />
+1) training set (1st-of-16 frame examples):
+<p align="center">
+    <img width="975" height="394" alt="image" src="./assets/illustration_train_set.png" />
+</p>
 
-SK-learn classification report:
+2) validation set (1st-of-16 frame examples):
+<p align="center">
+    <img width="975" height="392" alt="image" src="./assets/illustration_val_set.png" />
+</p>
+
+3) test set (1st-of-16 frame examples):
+<p align="center">
+    <img width="975" height="392" alt="image" src="./assets/illustration_test_set.png" />
+</p>
+
+## Quality reports
+
+Confusion Matrix built for test set:
+<p align="center">
+    <img width="864" height="710" alt="image" src="./assets/illustration_cm.png" />
+</p>
+
+SK-learn classification report on test set:
 
 | Class | Precision | Recall | F1-score | Support |
 |-------|-----------|--------|----------|---------|
@@ -63,10 +88,17 @@ SK-learn classification report:
 | **macro avg** | 0.92 | 0.91 | 0.91 | 528 |
 | **weighted avg** | 0.92 | 0.91 | 0.91 | 528 |
 
-Resulting model was converted to ONNX format, included into FastAPI-built gateway (can be queried), and put into docker image available at:
+
+## Inference
+The best checkpoint version was exported to ONNX. Inference pipeline was implemented around it, including FastAPI endpoint.
+Gateway docs are generated with FastApi and can be found at /docs endpoint:
+<p align="center">
+    <img width="710" alt="image" src="./assets/illustration_endpoint_specs.png" />
+</p>
+
+
+Resulting app was dockerized, with image pushed to Docker Hub:
 https://hub.docker.com/repository/docker/mihzad/gesture-classifier/general
 
+Also, a simple frontend (see ./inference_app/frontend for src) was generated, it does all the preprocessing and allows to recognize letters right away. See Demo for the work results.
 
-Also, a simple frontend was generated, it does all the preprocessing and allows to recognize letters right away.
-
-TODO: add illustrations, enhance description of gateway and frontend.
