@@ -15,12 +15,15 @@
 </p>
 
 ## Brief description
-This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf file - further descriptions of that one can be found there.
+This gesture classifier is the result of the first successful train|validation|test cycle i`ve ever made. For first (2D-conv) versions, see deprecated/. Its first version was also a part of my bachelors graduation work presented in deprecated/bachelors_diploma.pdf file - Defailed descriptions of that one can be found there.
+
 The second version is trained for all the alphabet including dynamic gestures, leverages completely different architecture - Expand3D (X3D-M) - with kinetics-400 backbone:
 
 *Feichtenhofer, C. (2020). X3D: Expanding architectures for efficient video recognition. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 203–213. https://doi.org/10.1109/CVPR42600.2020.00028*
 
 The dataset can be found at: https://doi.org/10.5281/zenodo.17618405
+
+Defailed descriptions of the last GC version can be found in masters_diploma.pdf
 
 ## Illustrations
 
@@ -90,8 +93,8 @@ SK-learn classification report on test set:
 
 
 ## Inference
-The best checkpoint version was exported to ONNX. Inference pipeline was implemented around it, including FastAPI endpoint.
-Gateway docs are generated with FastApi and can be found at /docs endpoint:
+The best checkpoint version was exported to ONNX. Inference pipeline was implemented around it, leveraging FastAPI for endpoint management.
+Gateway docs are auto-generated and can be found at /docs endpoint:
 <p align="center">
     <img width="710" alt="image" src="./assets/illustration_endpoint_specs.png" />
 </p>
@@ -100,5 +103,5 @@ Gateway docs are generated with FastApi and can be found at /docs endpoint:
 Resulting app was dockerized, with image pushed to Docker Hub:
 https://hub.docker.com/repository/docker/mihzad/gesture-classifier/general
 
-Also, a simple frontend (see ./inference_app/frontend for src) was generated, it does all the preprocessing and allows to recognize letters right away. See Demo for the work results.
+Also, a simple Gradio-based frontend (see ./inference_app/frontend for src) was generated, it allows to recognize letters right away. See Demo for the work results.
 
